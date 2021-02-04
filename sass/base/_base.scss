@@ -1,0 +1,37 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: "Tempus Sans ITC","arial","segoe print" ; 
+
+    @include respond(tab-land){
+        font-size:56.25%;
+    }
+    @include respond(tab-port){
+        font-size:50%;
+    }
+    @include respond(big-desktop){
+        font-size:75%;
+    }
+}
+
+body {
+    box-sizing: border-box;
+
+
+    @include respond(tab-port){
+        padding: 0;
+    }
+}
+.container{
+    display: grid;  
+    grid-template-rows: 80vh min-content  repeat(7, min-content);
+    grid-template-columns: [ full-start] minmax(8rem, 1fr) [  center-start] repeat(10, [col-start] minmax(min-content, 16rem) [col-end]) [center-end] minmax(8rem, 1fr) [full-end];
+ 
+} 
