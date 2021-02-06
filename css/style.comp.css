@@ -15,6 +15,10 @@
   order : base + typography> general layout + grid > page layout > components
   
   */
+:root {
+  --color-primary:rgb(247, 12, 247);
+  --color-primary-1:rgb(241, 116, 241); }
+
 *,
 *::after,
 *::before {
@@ -24,7 +28,7 @@
 
 html {
   font-size: 62.5%;
-  font-family: "Tempus Sans ITC","arial","segoe print"; }
+  font-family: sans-serif; }
   @media (max-width: 75em) {
     html {
       font-size: 56.25%; } }
@@ -55,7 +59,7 @@ body {
   padding: 4rem;
   padding-top: 4rem;
   display: grid;
-  grid-template-rows: minmax(6rem, 1fr) min-content minmax(6rem, min-content) 1fr;
+  grid-template-rows: minmax(6rem, 1fr) minmax(10rem, min-content) minmax(6rem, 1fr);
   grid-template-columns: 1fr repeat(6, minmax(min-content, 16rem)) 1fr; }
 
 .navigation {
@@ -65,21 +69,63 @@ body {
   .navigation-bar {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    column-gap: 15rem; }
+    column-gap: 35rem; }
+    @media only screen and (max-width: 62.5em) {
+      .navigation-bar {
+        column-gap: 25rem; } }
+    @media only screen and (max-width: 50em) {
+      .navigation-bar {
+        column-gap: 10rem; } }
   .navigation-list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    column-gap: 2rem;
+    column-gap: 4rem;
     align-items: center;
-    justify-content: center; }
+    justify-content: center;
+    z-index: 1; }
+    @media only screen and (max-width: 62.5em) {
+      .navigation-list {
+        column-gap: 1rem; } }
     .navigation-list_item {
       display: flex;
       color: white;
       align-items: center;
-      justify-content: center; }
+      justify-content: center;
+      position: relative; }
+      .navigation-list_item-link, .navigation-list_item-link:link {
+        color: white;
+        text-decoration: none;
+        font-size: 1.6rem;
+        font-weight: 0;
+        text-transform: uppercase;
+        letter-spacing: 1.1px;
+        z-index: 3;
+        padding: 1rem;
+        transition: all .5s; }
+        .navigation-list_item-link:hover, .navigation-list_item-link:link:hover {
+          transform: translateY(-0.5rem); }
+        .navigation-list_item-link::before, .navigation-list_item-link:link::before {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 0;
+          height: 3px;
+          width: 3px;
+          background-color: var(--color-primary);
+          transform: scaleY(0);
+          transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s; }
+        .navigation-list_item-link:hover::before, .navigation-list_item-link:link:hover::before {
+          transform: scaleY(1);
+          width: 100%; }
+  .navigation-logo_img {
+    width: 7rem;
+    height: 6rem; }
+
+.navigation-list_item-link-active {
+  color: var(--color-primary-1); }
 
 .main-text {
-  grid-column: 2/-1; }
+  grid-column: 1/-1; }
 
 .row {
   width: 114rem;

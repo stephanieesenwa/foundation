@@ -1,13 +1,13 @@
 .header{
       grid-column: full-start / full-end;
-      background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../img/children-2.jpeg);
+      background-image: linear-gradient(rgba(149, 123, 221, 0.3),rgba(0,0,0,0.7)),url(../img/nat-10.jpg);
       height: 98vh;
       background-size: cover;  
-      background-position: top right  ; 
+      background-position: bottom right  ; 
   
      
-      padding: 4rem;
-      padding-top: 4rem;
+      padding: 4rem 4rem 1rem 4rem;  
+    
 
 
 
@@ -44,41 +44,137 @@
             column-gap: 4rem;   
             align-items:center;
             justify-content: center;
-            padding-right: 5rem;   
+            z-index: 1;
             
-            @media only screen and (max-width: $bp-medium) { 
-                 padding-right: 2rem;  
-                 column-gap: 2rem;
-              }
+            @media only screen and (max-width: $bp-large) { 
+            
+                 column-gap: 1rem;  
+              } 
 
             &_item{
                   display: flex;
                   color: white;   
                   align-items: center;
                   justify-content: center;
+                  position: relative;  
 
-                  &-link{
+                  &-link,
+                  &-link:link{
                         color: white;
                         text-decoration: none;
+                        font-size: 1.7rem ;
+                        font-weight: 500;
+                        text-transform: uppercase; 
+                        letter-spacing: 1.1px;    
+                        z-index: 3;
+                        padding: 1rem; 
+                        transition: all .5s;
+
+                       
+
+                        &:hover{
+                              transform: translateY(-.5rem);
+                        }
+                        &::before {
+                              content: "";
+                              position: absolute;  
+                              top: 100%; 
+                              left: 0;
+                              height: 2px;
+                              width: 3px;
+                              background-color: var(--color-primary);
+                              transform: scaleY(0);
+                              transition: transform .2s,
+                                          width .4s cubic-bezier(1,0,0,1) .2s,
+                                          background-color .1s;
+                          }
+                      
+                          &:hover::before{
+                              transform: scaleY(1);
+                              width: 100%;
+                          }
+                      
                   }
             }
        }
         
-      // &-logo{
+       &-logo{
+           
 
-      //       &_img{
-
-      //       }
-      // }
+            &_img{
+                  width: 7rem;
+                  height: 6rem;
+             }
+       }
 }
-
+.navigation-list_item-link-active{
+      color:var(--color-primary); 
+      
+}
 //haeder-text
 .main-text{ 
       grid-column:1/-1 ; 
-      // &_primary{
+      display: grid;    
+      grid-template-rows:   2fr min-content;
+  
+      row-gap: 2rem;    
+      align-items: center;
+      justify-items: center;
+      font-family:Poor Richard;
+      color: white; 
+       &_primary{
+             font-size: 5rem;    
+          //   font-weight: 1; 
+             letter-spacing: 1.2rem; 
+             display: block;
 
-      // }
-      // &_secondary{
+                    &::after{
+                          display: block;
+                        height: 2px;
+                        background-color: var(--color-primary);
+                        content: "";
+                        width: 100%;
+                        margin: 0 auto;
+                        margin-top: 10px;    
+                       }
+       }
 
-      // }
+       &_secondary{
+            margin-top: 1rem; 
+             text-transform: uppercase;
+             letter-spacing: 1.8rem; 
+             font-weight: 500;  
+       }
+}
+.btn{
+       color: white;
+       text-decoration: none;
+       font-size: 2.5rem; 
+       
+       grid-column:1/-1 ; 
+      display: grid;    
+      grid-template-rows:  5fr .5fr; 
+      
+      align-items: baseline;
+      justify-items: center;
+      font-family:Poor Richard;
+      color: white;  
+       
+      
+
+            &-sign-up{
+                  grid-row: 2/ -1;
+
+               justify-items: center;
+               align-items: center;
+                  padding:1.5rem   5rem;    
+                  border: 3px solid var(--color-primary);  
+                  border-radius: 6px;
+                  letter-spacing: .2rem;
+            }
+
+
+
+
+      
 }

@@ -8,7 +8,7 @@
 
 html{
     font-size: 62.5%;
-    font-family: "Tempus Sans ITC","arial","segoe print" ; 
+    font-family:  sans-serif ;     
 
     @include respond(tab-land){
         font-size:56.25%;
